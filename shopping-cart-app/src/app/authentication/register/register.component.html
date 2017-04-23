@@ -5,28 +5,47 @@
         {{registerMessage}}
       </h2>
     </div>
-    <form #loginForm="ngForm" (ngSubmit)="submitLoginForm(loginForm)">
-      <div class="form-group row" [ngClass]="{'has-error' : loginForm.form.controls.email?.invalid && loginForm.form.controls.email?.touched }">
+    <form #registerForm="ngForm" (ngSubmit)="submitRegisterForm(registerForm)">
+      <div class="form-group row" [ngClass]="{'has-error' : registerForm.form.controls.email?.invalid && registerForm.form.controls.email?.touched }">
         <label for="email" class="col-md-4 col-md-offset-4">Email</label>
         <div class="col-md-4 col-md-offset-4">
           <input type="email" name="email" id="email" class="form-control" ngModel required pattern="^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$" />
-          <div *ngIf="loginForm.form.controls.email?.hasError('required') && loginForm.form.controls.email?.touched" class="form-text alert alert-danger">Please Enter Your Email</div>
-          <div *ngIf="loginForm.form.controls.email?.hasError('pattern') && loginForm.form.controls.email?.touched" class="form-text alert alert-danger">Please Enter a Valid Email</div>
+          <div *ngIf="registerForm.form.controls.email?.hasError('required') && registerForm.form.controls.email?.touched" class="form-text alert alert-danger">Please Enter Your Email</div>
+          <div *ngIf="registerForm.form.controls.email?.hasError('pattern') && registerForm.form.controls.email?.touched" class="form-text alert alert-danger">Please Enter a Valid Email</div>
         </div>
       </div>
-      <div class="form-group row" [ngClass]="{'has-error' : loginForm.form.controls.password?.invalid && loginForm.form.controls.password?.touched }">
+      <div class="form-group row" [ngClass]="{'has-error' : registerForm.form.controls.name?.invalid && registerForm.form.controls.name?.touched }">
+        <label for="name" class="col-md-4 col-md-offset-4">Name</label>
+        <div class="col-md-4 col-md-offset-4">
+          <input type="text" name="name" id="name" class="form-control" ngModel required minlength="4" />
+          <div *ngIf="registerForm.form.controls.name?.hasError('required') && registerForm.form.controls.name?.touched" class="form-text alert alert-danger">Please Enter Your Name</div>
+          <div *ngIf="registerForm.form.controls.name?.hasError('minlength') && registerForm.form.controls.name?.touched" class="form-text alert alert-danger">Please Enter at Least 4 Characters</div>
+        </div>
+      </div>
+      <div class="form-group row" [ngClass]="{'has-error' : registerForm.form.controls.surname?.invalid && registerForm.form.controls.surname?.touched }">
+        <label for="name" class="col-md-4 col-md-offset-4">Surname</label>
+        <div class="col-md-4 col-md-offset-4">
+          <input type="text" name="surname" id="surname" class="form-control" ngModel required minlength="4" />
+          <div *ngIf="registerForm.form.controls.surname?.hasError('required') && registerForm.form.controls.surname?.touched" class="form-text alert alert-danger">Please Enter Your Surname</div>
+          <div *ngIf="registerForm.form.controls.surname?.hasError('minlength') && registerForm.form.controls.surname?.touched" class="form-text alert alert-danger">Please Enter at Least 4 Characters</div>
+        </div>
+      </div>
+      <div class="form-group row" [ngClass]="{'has-error' : registerForm.form.controls.password?.invalid && registerForm.form.controls.password?.touched }">
         <label for="password" class="col-md-4 col-md-offset-4">Password</label>
         <div class="col-md-4 col-md-offset-4">
-          <input type="password" name="password" id="password" class="form-control" ngModel required minlength="4" />
-          <div *ngIf="loginForm.form.controls.password?.hasError('required') && loginForm.form.controls.password?.touched" class="form-text alert alert-danger">Please Enter Your Password</div>
-          <div *ngIf="loginForm.form.controls.password?.hasError('minlength') && loginForm.form.controls.password?.touched" class="form-text alert alert-danger">Please Enter at Least 4 Characters</div>
+          <input type="password" name="password" id="password" class="form-control" ngModel required />
+          <div *ngIf="registerForm.form.controls.password?.hasError('required') && registerForm.form.controls.password?.touched" class="form-text alert alert-danger">Please Enter Your Password</div>
+        </div>
+      </div>
+      <div class="form-group row" [ngClass]="{'has-error' : registerForm.form.controls.confirmPassword?.invalid && registerForm.form.controls.confirmPassword?.touched }">
+        <label for="confirmPassword" class="col-md-4 col-md-offset-4">Confirm Password</label>
+        <div class="col-md-4 col-md-offset-4">
+          <input type="password" name="confirmPassword" id="confirmPassword" class="form-control" ngModel required />
+          <div *ngIf="registerForm.form.controls.confirmPassword?.hasError('required') && registerForm.form.controls.confirmPassword?.touched" class="form-text alert alert-danger">Please Enter Your Confirm Password</div>
         </div>
       </div>
       <div class="form-group row">
-        <p class="col-md-4 col-md-offset-4">Don't have an account? <a href="#">Sign Up Now</a></p>
-      </div>
-      <div class="form-group row">
-        <button type="submit" class="btn btn-primary col-md-2 col-md-offset-5" [disabled]="loginForm.form.invalid">Sign In</button>
+        <button type="submit" class="btn btn-primary col-md-2 col-md-offset-5" [disabled]="registerForm.form.invalid">Register</button>
       </div>
     </form>
   </div>
