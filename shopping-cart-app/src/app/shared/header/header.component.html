@@ -1,12 +1,12 @@
 <div class="row-fluid">
   <div class="pull-left">
-    Page Title
+    Infused Olive Oils
   </div>
   <div *ngIf="authService.getUser() === null" class="pull-right">
     <a routerLink="login" routerLinkActive="active">Sign In</a>
   </div>
   <div *ngIf="authService.getUser() !== null" class="pull-right">
-    <span>Welcome, {{authService.getUser().name}} {{authService.getUser().surname}} <a routerLink="home" routerLinkActive="active" (click)="signOut()">Sign Out</a></span>
+    <span>Welcome, {{authService.getUser().name}} {{authService.getUser().surname}} <a routerLink="/home" (click)="signOut()">Sign Out</a></span>
   </div>
 </div>
 <div class="row">

@@ -9,6 +9,7 @@ import {AuthenticationModule} from './authentication/authentication.module';
 import {appRoutes} from './routes';
 import {RouterModule} from '@angular/router';
 import {HomeModule} from 'app/home/home.module';
+import {ProductModule} from './product/product.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {HomeModule} from 'app/home/home.module';
     RouterModule.forRoot(appRoutes),
     SharedModule,
     HomeModule,
+    ProductModule,
     AuthenticationModule
   ],
   providers: [],
