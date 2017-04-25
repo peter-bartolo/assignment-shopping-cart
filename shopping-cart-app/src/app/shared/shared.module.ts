@@ -2,15 +2,29 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import {RouterModule} from '@angular/router';
+import {HttpModule} from '@angular/http';
+import {UserService} from './service/user.service';
+import {CartService} from './service/cart.service';
+import {OrderService} from './service/order.service';
+import {ProductService} from './service/product.service';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    HttpModule
   ],
   exports: [
     HeaderComponent
   ],
-  declarations: [HeaderComponent]
+  declarations: [
+    HeaderComponent
+  ],
+  providers: [
+    UserService,
+    CartService,
+    OrderService,
+    ProductService
+  ]
 })
 export class SharedModule { }
