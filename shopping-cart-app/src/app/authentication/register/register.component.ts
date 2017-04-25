@@ -11,6 +11,8 @@ import {User} from '../../shared/model/User';
 export class RegisterComponent implements OnInit {
 
   private registerMessage = 'Registration';
+  private errorMessage = '';
+  private successMessage = '';
 
   constructor(private userService: UserService) { }
 
@@ -18,7 +20,14 @@ export class RegisterComponent implements OnInit {
   }
 
   private submitRegisterForm(registerForm: NgForm) {
-    const user: User = new User();
+    this.errorMessage = '';
+    this.successMessage = '';
+    let emailAlreadyExists = false;
+    let errorWhileGettingUsers = false;
+
+    debugger;
+
+    const user = new User();
     user.name = registerForm.controls.name.value;
     user.surname = registerForm.controls.surname.value;
     user.email = registerForm.controls.email.value;
@@ -26,6 +35,48 @@ export class RegisterComponent implements OnInit {
     user.isLoggedIn = 0;
     user.cartId = 0;
 
-    this.userService.addUser(user).subscribe();
+    this.userService.getUsers()
+      .map((response) => response.json())
+      .mergeMap((dbUser: Array<User>) => dbUser)
+      .map((dbUser) => {
+        const u = new User();
+        u.id = dbUser.id;
+        u.name = dbUser.name;
+        u.surname = dbUser.surname;
+        u.email = dbUser.email;
+        u.password = dbUser.password;
+        u.isLoggedIn = dbUser.isLoggedIn;
+        u.cartId = dbUser.cartId;
+        return u;
+      })
+      .filter((u) => {
+        return u.email === user.email;
+      })
+      .subscribe(
+        (u) => {
+          if (u !== null) {
+            emailAlreadyExists = true;
+          }
+        },
+        (err) => {
+          errorWhileGettingUsers = true;
+        },
+        () => {
+          if (errorWhileGettingUsers) {
+            this.errorMessage = 'Failed to check whether email already exists';
+          } else if (emailAlreadyExists) {
+            this.errorMessage = 'Email already exists';
+          } else {
+            this.userService.addUser(user).subscribe(
+              (data) => {
+                this.successMessage = 'You have been successfully Registered';
+              },
+              (err) => {
+                this.errorMessage = 'Registration Failed, please try again';
+              }
+            );
+          }
+        }
+      );
   }
 }

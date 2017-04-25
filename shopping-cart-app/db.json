@@ -5,16 +5,7 @@
       "name": "Peter",
       "surname": "Bartolo",
       "email": "peter_bartolo@hotmail.com",
-      "password": "123",
-	    "isLoggedIn": 0,
-	    "cartId": 0
-    },
-    {
-      "name": "Miriam",
-      "surname": "Farrugia",
-      "email": "mimi@gmail.com",
       "password": "123456",
-      "id": 2,
       "isLoggedIn": 0,
       "cartId": 0
     },
@@ -22,19 +13,19 @@
       "name": "Miriam",
       "surname": "Farrugia",
       "email": "mimi@gmail.com",
-      "password": "123456789",
-      "id": 3,
+      "password": "sangwann",
       "isLoggedIn": 0,
-      "cartId": 0
+      "cartId": 0,
+      "id": 2
     },
     {
-      "name": "Conrad",
-      "surname": "Mizzi",
-      "email": "test@test.com",
-      "password": "panama",
-      "id": 4,
+      "name": "Francois",
+      "surname": "Bartolo",
+      "email": "francois@gmail.com",
+      "password": "basketball",
       "isLoggedIn": 0,
-      "cartId": 0
+      "cartId": 0,
+      "id": 3
     }
   ],
   "carts": [
@@ -42,7 +33,7 @@
       "id": 1,
       "userId": 1,
       "total": 20,
-	    "convertedToOrder": 0,
+      "convertedToOrder": 0,
       "items": [
         {
           "id": 5,
