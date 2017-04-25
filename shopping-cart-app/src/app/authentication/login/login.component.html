@@ -23,6 +23,9 @@
         </div>
       </div>
       <div class="form-group row">
+        <div *ngIf="errorMessage.length > 0" class="col-md-4 col-md-offset-4 form-text alert alert-danger">{{errorMessage}}</div>
+      </div>
+      <div class="form-group row">
         <p class="col-md-4 col-md-offset-4">Don't have an account? <a routerLink="/register">Sign Up Now</a></p>
       </div>
       <div class="form-group row">

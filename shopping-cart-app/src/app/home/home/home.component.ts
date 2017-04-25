@@ -8,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   private title = 'Infused Olive Oils Online Shop';
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
-
 }

@@ -1,114 +1,139 @@
 {
-	"users" :
-	[
-		{
-			"id":1,
-			"name":"Peter",
-			"surname":"Bartolo",
-			"email":"peter_bartolo@hotmail.com",
-			"password":""
-		}
-	],
-	"carts" :
-	[
-		{
-			"id":1,
-			"userId":1,
-			"total":20,
-			"products":
-			[
-				{
-					"id":5,
-					"qty":1
-				},
-				{
-					"id":6,
-					"qty":1
-				}
-			]
-		}
-	],
-	"orders" :
-	[
-		{
-			"id":1,
-			"userId":1,
-			"cartId":1
-		}
-	],
-	"products" :
-	[
-		{
-			"id":1,
-			"name":"infused olive oil for pizza",
-			"ingredients":"oregano, thyme, basil, olive oil",
-			"description":"100% organic infused olive oil for pizza with a touch of love and care.",
-			"volume":"500ml",
-			"price":7,
-			"image":"olive-oil-pizza-500.jpg"
-		},
-		{
-			"id":2,
-			"name":"infused olive oil for red meat",
-			"ingredients":"rosemary, garlic, bay leaves, olive oil",
-			"description":"100% organic infused olive oil for red meat with a touch of love and care.",
-			"volume":"500ml",
-			"price":7,
-			"image":"olive-oil-red-meat-500.jpg"
-		},
-		{
-			"id":3,
-			"name":"infused olive oil for poultry",
-			"ingredients":"chives, lemon zest, garlic, olive oil",
-			"description":"100% organic infused olive oil for poultry with a touch of love and care.",
-			"volume":"500ml",
-			"price":7,
-			"image":"olive-oil-poultry-500.jpg"
-		},
-		{
-			"id":4,
-			"name":"infused olive oil for salads",
-			"ingredients":"mint, garlic, chives, olive oil",
-			"description":"100% organic infused olive oil for salads with a touch of love and care.",
-			"volume":"500ml",
-			"price":7,
-			"image":"olive-oil-salads-500.jpg"
-		},
-		{
-			"id":5,
-			"name":"infused olive oil for pizza",
-			"ingredients":"oregano, thyme, basil, olive oil",
-			"description":"100% organic infused olive oil for pizza with a touch of love and care.",
-			"volume":"750ml",
-			"price":10,
-			"image":"olive-oil-pizza-750.jpg"
-		},
-		{
-			"id":6,
-			"name":"infused olive oil for red meat",
-			"ingredients":"rosemary, garlic, bay leaves, olive oil",
-			"description":"100% organic infused olive oil for red meat with a touch of love and care.",
-			"volume":"750ml",
-			"price":10,
-			"image":"olive-oil-red-meat-750.jpg"
-		},
-		{
-			"id":7,
-			"name":"infused olive oil for poultry",
-			"ingredients":"chives, lemon zest, garlic, olive oil",
-			"description":"100% organic infused olive oil for poultry with a touch of love and care.",
-			"volume":"750ml",
-			"price":10,
-			"image":"olive-oil-poultry-750.jpg"
-		},
-		{
-			"id":8,
-			"name":"infused olive oil for salads",
-			"ingredients":"mint, garlic, chives, olive oil",
-			"description":"100% organic infused olive oil for salads with a touch of love and care.",
-			"volume":"750ml",
-			"price":10,
-			"image":"olive-oil-salads-750.jpg"
-		}
-	]
+  "users": [
+    {
+      "id": 1,
+      "name": "Peter",
+      "surname": "Bartolo",
+      "email": "peter_bartolo@hotmail.com",
+      "password": "123",
+	    "isLoggedIn": 0,
+	    "cartId": 0
+    },
+    {
+      "name": "Miriam",
+      "surname": "Farrugia",
+      "email": "mimi@gmail.com",
+      "password": "123456",
+      "id": 2,
+      "isLoggedIn": 0,
+      "cartId": 0
+    },
+    {
+      "name": "Miriam",
+      "surname": "Farrugia",
+      "email": "mimi@gmail.com",
+      "password": "123456789",
+      "id": 3,
+      "isLoggedIn": 0,
+      "cartId": 0
+    },
+    {
+      "name": "Conrad",
+      "surname": "Mizzi",
+      "email": "test@test.com",
+      "password": "panama",
+      "id": 4,
+      "isLoggedIn": 0,
+      "cartId": 0
+    }
+  ],
+  "carts": [
+    {
+      "id": 1,
+      "userId": 1,
+      "total": 20,
+	    "convertedToOrder": 0,
+      "items": [
+        {
+          "id": 5,
+          "qty": 1
+        },
+        {
+          "id": 6,
+          "qty": 1
+        }
+      ]
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "userId": 1,
+      "cartId": 1
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "infused olive oil for pizza",
+      "ingredients": "oregano, thyme, basil, olive oil",
+      "description": "100% organic infused olive oil for pizza with a touch of love and care.",
+      "volume": 500,
+      "price": 7,
+      "image": "olive-oil-pizza-500.jpg"
+    },
+    {
+      "id": 2,
+      "name": "infused olive oil for red meat",
+      "ingredients": "rosemary, garlic, bay leaves, olive oil",
+      "description": "100% organic infused olive oil for red meat with a touch of love and care.",
+      "volume": 500,
+      "price": 7,
+      "image": "olive-oil-red-meat-500.jpg"
+    },
+    {
+      "id": 3,
+      "name": "infused olive oil for poultry",
+      "ingredients": "chives, lemon zest, garlic, olive oil",
+      "description": "100% organic infused olive oil for poultry with a touch of love and care.",
+      "volume": 500,
+      "price": 7,
+      "image": "olive-oil-poultry-500.jpg"
+    },
+    {
+      "id": 4,
+      "name": "infused olive oil for salads",
+      "ingredients": "mint, garlic, chives, olive oil",
+      "description": "100% organic infused olive oil for salads with a touch of love and care.",
+      "volume": 500,
+      "price": 7,
+      "image": "olive-oil-salads-500.jpg"
+    },
+    {
+      "id": 5,
+      "name": "infused olive oil for pizza",
+      "ingredients": "oregano, thyme, basil, olive oil",
+      "description": "100% organic infused olive oil for pizza with a touch of love and care.",
+      "volume": 750,
+      "price": 10,
+      "image": "olive-oil-pizza-750.jpg"
+    },
+    {
+      "id": 6,
+      "name": "infused olive oil for red meat",
+      "ingredients": "rosemary, garlic, bay leaves, olive oil",
+      "description": "100% organic infused olive oil for red meat with a touch of love and care.",
+      "volume": 750,
+      "price": 10,
+      "image": "olive-oil-red-meat-750.jpg"
+    },
+    {
+      "id": 7,
+      "name": "infused olive oil for poultry",
+      "ingredients": "chives, lemon zest, garlic, olive oil",
+      "description": "100% organic infused olive oil for poultry with a touch of love and care.",
+      "volume": 750,
+      "price": 10,
+      "image": "olive-oil-poultry-750.jpg"
+    },
+    {
+      "id": 8,
+      "name": "infused olive oil for salads",
+      "ingredients": "mint, garlic, chives, olive oil",
+      "description": "100% organic infused olive oil for salads with a touch of love and care.",
+      "volume": 750,
+      "price": 10,
+      "image": "olive-oil-salads-750.jpg"
+    }
+  ]
 }

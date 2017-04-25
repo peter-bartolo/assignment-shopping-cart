@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
+import {AuthService} from '../service/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,14 +11,31 @@ import {NgForm} from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   private loginMessage = 'Welcome';
+  private errorMessage = '';
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  private submitLoginForm(loginForm : NgForm)
-  {
-    debugger;
+  private submitLoginForm(loginForm: NgForm) {
+    this.authService.setUser(null);
+    this.errorMessage = '';
+    const loginObservable = this.authService.login(loginForm.controls.email.value, loginForm.controls.password.value);
+    loginObservable.subscribe(
+      (user) => {
+        this.authService.setUser(user);
+        this.router.navigate(['/home']);
+      },
+      (err) => {
+        this.authService.setUser(null);
+        this.errorMessage = 'Failed to Access Database';
+      },
+      () => {
+        if (this.authService.getUser() === null && this.errorMessage === '') {
+          this.errorMessage = 'Incorrect Credentials';
+        }
+      }
+    );
   }
 }
