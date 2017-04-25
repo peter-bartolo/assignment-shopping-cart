@@ -2,8 +2,11 @@
   <div class="pull-left">
     Page Title
   </div>
-  <div class="pull-right">
+  <div *ngIf="authService.getUser() === null" class="pull-right">
     <a routerLink="login" routerLinkActive="active">Sign In</a>
+  </div>
+  <div *ngIf="authService.getUser() !== null" class="pull-right">
+    <span>Welcome, {{authService.getUser().name}} {{authService.getUser().surname}} <a routerLink="home" routerLinkActive="active" (click)="signOut()">Sign Out</a></span>
   </div>
 </div>
 <div class="row">
