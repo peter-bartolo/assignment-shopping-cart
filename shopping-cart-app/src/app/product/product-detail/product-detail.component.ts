@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../../shared/service/product.service';
 import {Product} from 'app/shared/model/Product';
 import {ActivatedRoute} from '@angular/router';
+import {AuthService} from '../../authentication/service/auth.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -13,7 +14,7 @@ export class ProductDetailComponent implements OnInit {
   private product: Product;
   private errorMessage: string;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute) {
+  constructor(private productService: ProductService, private route: ActivatedRoute, private authService: AuthService) {
     this.product = null;
     this.errorMessage = '';
   }
