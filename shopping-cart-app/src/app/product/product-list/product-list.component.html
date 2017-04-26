@@ -1,3 +1,18 @@
-<p>
-  product-list works!
-</p>
+<div class="container">
+  <div class="row">
+    <div *ngIf="errorMessage.length > 0" class="col-md-12 alert alert-danger">{{errorMessage}}</div>
+  </div>
+  <div class="row" *ngFor="let counter of rows">
+    <div class="col-md-4 text-center well" *ngFor="let p of products.slice(counter * 3, (counter * 3) + 3)">
+      <div>
+        <a [routerLink]="['/product',p.id]"><img src="/assets/images/{{p?.image}}" width="340px" height="340px" /></a>
+      </div>
+      <div class="text-muted text-left">
+        <a [routerLink]="['/product',p.id]">{{p?.name}}</a>
+      </div>
+      <div class="text-info text-left">
+        {{p?.price | currency:'EUR':'1.2-2'}}
+      </div>
+    </div>
+  </div>
+</div>

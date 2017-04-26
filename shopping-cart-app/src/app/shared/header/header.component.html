@@ -1,14 +1,16 @@
-<div class="row-fluid">
-  <div class="pull-left">
-    Infused Olive Oils
+<div class="container">
+  <div class="row-fluid">
+    <div class="pull-left">
+      Infused Olive Oils
+    </div>
+    <div *ngIf="authService.getUser() === null" class="pull-right">
+      <a routerLink="login" routerLinkActive="active">Sign In</a>
+    </div>
+    <div *ngIf="authService.getUser() !== null" class="pull-right">
+      <span>Welcome, {{authService.getUser().name}} {{authService.getUser().surname}} <a routerLink="/home" (click)="signOut()">Sign Out</a></span>
+    </div>
   </div>
-  <div *ngIf="authService.getUser() === null" class="pull-right">
-    <a routerLink="login" routerLinkActive="active">Sign In</a>
+  <div class="row">
+    <hr>
   </div>
-  <div *ngIf="authService.getUser() !== null" class="pull-right">
-    <span>Welcome, {{authService.getUser().name}} {{authService.getUser().surname}} <a routerLink="/home" (click)="signOut()">Sign Out</a></span>
-  </div>
-</div>
-<div class="row">
-  <hr>
 </div>
