@@ -11,7 +11,7 @@
         <a [routerLink]="['/product',p.id]">{{p?.name}}</a>
       </div>
       <div class="text-info text-left">
-        {{p?.price | currency:'EUR':'1.2-2'}}
+        <h4>{{p?.price | currency:'EUR':'1.2-2'}}</h4>
       </div>
     </div>
   </div>

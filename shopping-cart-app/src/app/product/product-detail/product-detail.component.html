@@ -1,5 +1,42 @@
 <div class="container">
-  <p>
-    product-detail works!
-  </p>
+  <div class="row">
+    <div *ngIf="errorMessage.length > 0" class="col-md-12 alert alert-danger">{{errorMessage}}</div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 text-center">
+      <img src="/assets/images/{{product?.image}}" width="340px" height="340px" />
+    </div>
+    <div class="col-md-7">
+      <div class="text-center">
+        <h2>
+          {{product?.name}}
+        </h2>
+      </div>
+      <br />
+      <div class="text-center">
+        <em>Infused with {{product?.ingredients}}</em>
+      </div>
+      <br />
+      <div class="text-muted">
+        {{product?.description}}
+      </div>
+      <div class="text-center">
+        <h4>Volume: {{product?.volume}}ml</h4>
+      </div>
+      <br />
+      <div class="text-center text-info">
+        <h4>Price: {{product?.price | currency:'EUR':'1.2-2'}}</h4>
+      </div>
+      <br />
+      <br />
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="input-group">
+            <input type="number" name="qty" value="1" min="1" max="100" class="form-control" />
+            <span class="input-group-btn"><button type="button" class="btn btn-primary">Add To Cart</button></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

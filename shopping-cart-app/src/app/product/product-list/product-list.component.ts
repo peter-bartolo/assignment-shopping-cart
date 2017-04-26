@@ -16,6 +16,9 @@ export class ProductListComponent implements OnInit {
   constructor(private productService: ProductService) {
     this.errorMessage = '';
     this.products = new Array();
+  }
+
+  ngOnInit() {
     this.productService.getProducts()
       .map((response) => response.json())
       .mergeMap((dbProduct: Array<Product>) => dbProduct)
@@ -44,9 +47,6 @@ export class ProductListComponent implements OnInit {
           }
         }
       );
-  }
-
-  ngOnInit() {
   }
 
 }
