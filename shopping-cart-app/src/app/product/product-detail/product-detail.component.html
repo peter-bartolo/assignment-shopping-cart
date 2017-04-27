@@ -32,10 +32,12 @@
       <br />
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
-          <div class="input-group">
-            <input type="number" name="qty" value="1" min="1" max="100" class="form-control" />
-            <span class="input-group-btn"><button type="button" class="btn btn-primary" [disabled]="authService.getUser() === null">Add To Cart</button></span>
-          </div>
+          <form #addToCartForm="ngForm" (ngSubmit)="submitAddToCartForm(addToCartForm)">
+            <div class="input-group">
+                <input type="number" name="qty" value="1" min="1" max="100" class="form-control" ngModel />
+                <span class="input-group-btn"><button type="submit" class="btn btn-primary" [disabled]="authService.getUser() === null || addToCartForm.form.invalid">Add To Cart</button></span>
+            </div>
+          </form>
         </div>
       </div>
     </div>

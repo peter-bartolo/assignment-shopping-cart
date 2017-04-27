@@ -25,8 +25,6 @@ export class RegisterComponent implements OnInit {
     let emailAlreadyExists = false;
     let errorWhileGettingUsers = false;
 
-    debugger;
-
     const user = new User();
     user.name = registerForm.controls.name.value;
     user.surname = registerForm.controls.surname.value;

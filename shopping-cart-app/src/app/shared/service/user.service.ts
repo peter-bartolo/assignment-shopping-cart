@@ -26,4 +26,10 @@ export class UserService {
     return this.http.post(this.url + '/users', user.toJson(), options);
   }
 
+  public updateUser(user: User) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+
+    return this.http.put(this.url + '/users/' + user.id, user.toJson(), options);
+  }
 }

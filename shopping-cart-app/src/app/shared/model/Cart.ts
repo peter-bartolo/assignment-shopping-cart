@@ -1,3 +1,5 @@
+import {Item} from './Item';
+
 export class Cart {
   private _id: number;
   private _userId: number;
@@ -45,42 +47,53 @@ export class Cart {
     this._items = value;
   }
 
+  public updateCart(item: Item, itemPrice: number) {
+    this._total += itemPrice * item.qty;
+    if (this._hasItem(item.id)) {
+      for (const cartItem of this._items) {
+        if (cartItem.id === item.id) {
+          cartItem.qty += item.qty;
+        }
+      }
+    } else {
+      this._items.push(item);
+    }
+  }
+
+  private _hasItem(itemId: number) {
+    if (this._items && this._items.length > 0) {
+      for (const item of this._items) {
+        if (item.id === itemId) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   public toJson() {
+    let itemJson = '[';
+    if (this._items && this._items.length > 0) {
+      let isFirstItem = true;
+      for (const item of this._items) {
+        if (!isFirstItem) {
+          itemJson += ',';
+        }
+        const originalItem: Item = new Item();
+        originalItem.id = item.id;
+        originalItem.qty = item.qty;
+        itemJson += originalItem.toJson();
+        isFirstItem = false;
+      }
+    }
+    itemJson += ']';
+
     return JSON.stringify({
       'id': this._id,
       'userId': this._userId,
       'total': this._total,
       'convertedToOrder': this._convertedToOrder,
-      'items': this._items
+      'items': JSON.parse(itemJson)
     });
   }
-}
-
-export class Item {
-  private _id: number;
-  private _qty: number;
-
-  get id(): number {
-    return this._id;
-  }
-
-  set id(value: number) {
-    this._id = value;
-  }
-
-  get qty(): number {
-    return this._qty;
-  }
-
-  set qty(value: number) {
-    this._qty = value;
-  }
-
-  // toJson() {
-  //   return JSON.stringify({
-  //       'id': this._id,
-  //       'qty': this._qty
-  //     }
-  //   );
-  // }
 }

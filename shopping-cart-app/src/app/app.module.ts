@@ -10,6 +10,7 @@ import {appRoutes} from './routes';
 import {RouterModule} from '@angular/router';
 import {HomeModule} from 'app/home/home.module';
 import {ProductModule} from './product/product.module';
+import {CartModule} from 'app/cart/cart.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {ProductModule} from './product/product.module';
     SharedModule,
     HomeModule,
     ProductModule,
-    AuthenticationModule
+    AuthenticationModule,
+    CartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

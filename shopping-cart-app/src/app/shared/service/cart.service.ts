@@ -25,4 +25,11 @@ export class CartService {
 
     return this.http.post(this.url + '/carts', cart.toJson(), options);
   }
+
+  public updateCart(cart: Cart) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+
+    return this.http.put(this.url + '/carts/' + cart.id, cart.toJson(), options);
+  }
 }
