@@ -8,7 +8,7 @@ import {UserService} from '../../shared/service/user.service';
 import {Cart} from '../../shared/model/Cart';
 import {Item} from '../../shared/model/Item';
 import {CartService} from 'app/shared/service/cart.service';
-import {CurrentCartService} from '../../sessioncart/service/current-cart.service';
+import {CurrentCartService} from 'app/shared/service/current-cart.service';
 
 @Component({
   selector: 'app-product-detail',

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {AuthService} from '../service/auth.service';
 import {Router} from '@angular/router';
-import {CurrentCartService} from '../../sessioncart/service/current-cart.service';
+import {CurrentCartService} from 'app/shared/service/current-cart.service';
 
 @Component({
   selector: 'app-login',

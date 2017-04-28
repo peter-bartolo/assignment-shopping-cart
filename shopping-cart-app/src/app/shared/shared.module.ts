@@ -7,6 +7,7 @@ import {UserService} from './service/user.service';
 import {CartService} from './service/cart.service';
 import {OrderService} from './service/order.service';
 import {ProductService} from './service/product.service';
+import {CurrentCartService} from './service/current-cart.service';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import {ProductService} from './service/product.service';
     UserService,
     CartService,
     OrderService,
-    ProductService
+    ProductService,
+    CurrentCartService
   ]
 })
 export class SharedModule { }
