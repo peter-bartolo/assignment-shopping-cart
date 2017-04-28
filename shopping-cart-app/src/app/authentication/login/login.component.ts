@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {AuthService} from '../service/auth.service';
 import {Router} from '@angular/router';
+import {CurrentCartService} from '../../sessioncart/service/current-cart.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   private loginMessage = 'Welcome';
   private errorMessage = '';
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private currentCartService: CurrentCartService) { }
 
   ngOnInit() {
   }
@@ -25,6 +26,9 @@ export class LoginComponent implements OnInit {
     loginObservable.subscribe(
       (user) => {
         this.authService.setUser(user);
+        if (user.cartId !== 0) {
+          this.currentCartService.setCurrentCartById(user.cartId);
+        }
         this.router.navigate(['/home']);
       },
       (err) => {

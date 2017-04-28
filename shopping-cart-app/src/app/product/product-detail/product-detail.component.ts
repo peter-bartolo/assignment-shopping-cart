@@ -8,6 +8,7 @@ import {UserService} from '../../shared/service/user.service';
 import {Cart} from '../../shared/model/Cart';
 import {Item} from '../../shared/model/Item';
 import {CartService} from 'app/shared/service/cart.service';
+import {CurrentCartService} from '../../sessioncart/service/current-cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -25,7 +26,8 @@ export class ProductDetailComponent implements OnInit {
     private cartService: CartService,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService) {
+    private authService: AuthService,
+    private currentCartService: CurrentCartService) {
     this.product = null;
     this.errorMessage = '';
   }
@@ -52,7 +54,7 @@ export class ProductDetailComponent implements OnInit {
           },
           (err) => {
             this.errorMessage = 'Failed to Load Product from Database';
-          },
+          }
         );
     } else {
       this.errorMessage = 'Failed to Load Product from Database';
@@ -90,6 +92,7 @@ export class ProductDetailComponent implements OnInit {
           loggedInUser.cartId = data.json().id;
           this.userService.updateUser(loggedInUser).subscribe(
             (userData) => {
+              this.currentCartService.setCurrentCart(newCart);
               this.router.navigate(['/cart']);
             },
             (err) => {
@@ -112,7 +115,15 @@ export class ProductDetailComponent implements OnInit {
           existingCart.userId = dbCart.userId;
           existingCart.total = dbCart.total;
           existingCart.convertedToOrder = dbCart.convertedToOrder;
-          existingCart.items = dbCart.items;
+
+          const items: Array<Item> = new Array<Item>();
+          for (const itemJson of dbCart.items) {
+            const item = new Item();
+            item.id = itemJson.id;
+            item.qty = itemJson.qty;
+            items.push(item);
+          }
+          existingCart.items = items;
           return existingCart;
         })
         .subscribe(
@@ -123,6 +134,7 @@ export class ProductDetailComponent implements OnInit {
             existingCart.updateCart(item, this.product.price);
             this.cartService.updateCart(existingCart).subscribe(
               (cartData) => {
+                this.currentCartService.setCurrentCart(existingCart);
                 this.router.navigate(['/cart']);
               },
               (err) => {

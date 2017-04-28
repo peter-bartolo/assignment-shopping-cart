@@ -7,7 +7,13 @@
       <a routerLink="login" routerLinkActive="active">Sign In</a>
     </div>
     <div *ngIf="authService.getUser() !== null" class="pull-right">
-      <span>Welcome, {{authService.getUser().name}} {{authService.getUser().surname}} <a routerLink="/home" (click)="signOut()">Sign Out</a></span>
+      <a routerLink="/home" (click)="signOut()">Sign Out</a>
+    </div>
+    <div *ngIf="loggedInUserHasCart() === true" class="pull-right">
+      <a routerLink="/cart"><span class="glyphicon glyphicon-shopping-cart"> </span> {{getNumberOfCartItems()}}</a>
+    </div>
+    <div *ngIf="authService.getUser() !== null" class="pull-right">
+      <span>Welcome, {{authService.getUser().name}} {{authService.getUser().surname}} </span>
     </div>
   </div>
   <div class="row">

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../authentication/service/auth.service';
+import {Cart} from '../model/Cart';
+import {CurrentCartService} from 'app/sessioncart/service/current-cart.service';
 
 @Component({
   selector: 'app-header',
@@ -8,12 +10,32 @@ import {AuthService} from '../../authentication/service/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private currentCartService: CurrentCartService) { }
 
   ngOnInit() {
   }
 
-  signOut() {
+  public signOut() {
     this.authService.logout();
+  }
+
+  public loggedInUserHasCart() {
+    const currentCart = this.currentCartService.getCurrentCart();
+    if (currentCart && currentCart !== null) {
+      return true;
+    }
+
+    return false;
+  }
+
+  public getNumberOfCartItems() {
+    let numberOfItems = 0;
+    const currentCart = this.currentCartService.getCurrentCart();
+    if (currentCart && currentCart !== null) {
+      for (const item of currentCart.items) {
+        numberOfItems += item.qty;
+      }
+    }
+    return numberOfItems;
   }
 }

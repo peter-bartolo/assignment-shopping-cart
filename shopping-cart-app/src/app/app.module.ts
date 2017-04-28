@@ -10,7 +10,7 @@ import {appRoutes} from './routes';
 import {RouterModule} from '@angular/router';
 import {HomeModule} from 'app/home/home.module';
 import {ProductModule} from './product/product.module';
-import {CartModule} from 'app/cart/cart.module';
+import {SessioncartModule} from 'app/sessioncart/sessioncart.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import {CartModule} from 'app/cart/cart.module';
     HomeModule,
     ProductModule,
     AuthenticationModule,
-    CartModule
+    SessioncartModule
   ],
   providers: [],
   bootstrap: [AppComponent]
