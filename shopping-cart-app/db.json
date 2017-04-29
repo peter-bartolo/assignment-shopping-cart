@@ -44,6 +44,42 @@
       "isLoggedIn": 0,
       "cartId": 0,
       "id": 5
+    },
+    {
+      "name": "peter",
+      "surname": "bartolo",
+      "email": "testing@testing.com",
+      "password": "123456",
+      "isLoggedIn": 0,
+      "cartId": 0,
+      "id": 6
+    },
+    {
+      "name": "peter",
+      "surname": "bartolo",
+      "email": "testing2@testing.com",
+      "password": "123456",
+      "isLoggedIn": 0,
+      "cartId": 0,
+      "id": 7
+    },
+    {
+      "name": "asdasdf",
+      "surname": "asdfa",
+      "email": "testasdf@gmail.com",
+      "password": "123456",
+      "isLoggedIn": 0,
+      "cartId": 0,
+      "id": 8
+    },
+    {
+      "name": "testing",
+      "surname": "asdfasd",
+      "email": "peter_bartolo@gmail.com",
+      "password": "123456",
+      "isLoggedIn": 0,
+      "cartId": 0,
+      "id": 9
     }
   ],
   "carts": [
@@ -102,6 +138,42 @@
           "qty": 4
         }
       ]
+    },
+    {
+      "id": 5,
+      "userId": 1,
+      "total": 55,
+      "convertedToOrder": 1,
+      "items": [
+        {
+          "id": 3,
+          "qty": 5
+        },
+        {
+          "id": 5,
+          "qty": 2
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "userId": 1,
+      "total": 71,
+      "convertedToOrder": 1,
+      "items": [
+        {
+          "id": 3,
+          "qty": 2
+        },
+        {
+          "id": 2,
+          "qty": 1
+        },
+        {
+          "id": 5,
+          "qty": 5
+        }
+      ]
     }
   ],
   "orders": [
@@ -124,6 +196,16 @@
       "userId": 1,
       "cartId": 4,
       "id": 4
+    },
+    {
+      "userId": 1,
+      "cartId": 5,
+      "id": 5
+    },
+    {
+      "userId": 1,
+      "cartId": 6,
+      "id": 6
     }
   ],
   "products": [

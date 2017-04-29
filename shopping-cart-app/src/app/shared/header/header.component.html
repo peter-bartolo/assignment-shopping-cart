@@ -1,22 +1,46 @@
-<div class="container">
-  <div class="row-fluid">
-    <div class="pull-left">
-      <a routerLink="/home">Infused Olive Oils</a>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a routerLink="/home" class="navbar-brand">Infused Olive Oils</a>
     </div>
-    <div *ngIf="authService.getUser() === null" class="pull-right">
-      <a routerLink="login" routerLinkActive="active">Sign In</a>
-    </div>
-    <div *ngIf="authService.getUser() !== null" class="pull-right">
-      <a routerLink="/home" (click)="signOut()">Sign Out</a>
-    </div>
-    <div *ngIf="loggedInUserHasCart() === true" class="pull-right">
-      <a routerLink="/cart"><span class="glyphicon glyphicon-shopping-cart"> </span> {{getNumberOfCartItems()}}</a>
-    </div>
-    <div *ngIf="authService.getUser() !== null" class="pull-right">
-      <span>Welcome, {{authService.getUser().name}} {{authService.getUser().surname}} </span>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li *ngIf="authService.getUser() !== null">
+          <a>Welcome, {{authService.getUser().name}} {{authService.getUser().surname}}</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="authService.getUser() === null">
+          <a routerLink="login" routerLinkActive="active">Sign In</a>
+        </li>
+        <li *ngIf="loggedInUserHasCart() === true">
+          <a routerLink="/cart"><span class="glyphicon glyphicon-shopping-cart"> </span> {{getNumberOfCartItems()}}</a>
+        </li>
+        <li *ngIf="authService.getUser() !== null">
+          <a routerLink="/home" (click)="signOut()">Sign Out</a>
+        </li>
+      </ul>
     </div>
   </div>
-  <div class="row">
-    <hr>
-  </div>
-</div>
+</nav>
+
+  <!--<div class="row-fluid">-->
+    <!--<div class="pull-left">-->
+      <!--<a routerLink="/home">Infused Olive Oils</a>-->
+    <!--</div>-->
+    <!--<div *ngIf="authService.getUser() === null" class="pull-right">-->
+      <!--<a routerLink="login" routerLinkActive="active">Sign In</a>-->
+    <!--</div>-->
+    <!--<div *ngIf="authService.getUser() !== null" class="pull-right">-->
+      <!--<a routerLink="/home" (click)="signOut()">Sign Out</a>-->
+    <!--</div>-->
+    <!--<div *ngIf="loggedInUserHasCart() === true" class="pull-right">-->
+      <!--<a routerLink="/cart"><span class="glyphicon glyphicon-shopping-cart"> </span> {{getNumberOfCartItems()}}</a>-->
+    <!--</div>-->
+    <!--<div *ngIf="authService.getUser() !== null" class="pull-right">-->
+      <!--<span>Welcome, {{authService.getUser().name}} {{authService.getUser().surname}} </span>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="row">-->
+    <!--<hr>-->
+  <!--</div>-->
