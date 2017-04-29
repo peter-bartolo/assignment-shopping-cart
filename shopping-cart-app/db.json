@@ -50,20 +50,12 @@
     {
       "id": 1,
       "userId": 1,
-      "total": 113,
+      "total": 49,
       "convertedToOrder": 0,
       "items": [
         {
           "id": 3,
           "qty": 7
-        },
-        {
-          "id": 5,
-          "qty": 5
-        },
-        {
-          "id": 2,
-          "qty": 2
         }
       ]
     },

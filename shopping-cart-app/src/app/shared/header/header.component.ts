@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
 
   public signOut() {
     this.authService.logout();
+    this.currentCartService.setCurrentCart(null);
   }
 
   public loggedInUserHasCart() {
