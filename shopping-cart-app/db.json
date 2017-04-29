@@ -7,7 +7,7 @@
       "email": "peter_bartolo@hotmail.com",
       "password": "123456",
       "isLoggedIn": 0,
-      "cartId": 1
+      "cartId": 0
     },
     {
       "id": 2,
@@ -51,7 +51,7 @@
       "id": 1,
       "userId": 1,
       "total": 49,
-      "convertedToOrder": 0,
+      "convertedToOrder": 1,
       "items": [
         {
           "id": 3,
@@ -70,6 +70,38 @@
           "qty": 4
         }
       ]
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "total": 78,
+      "convertedToOrder": 1,
+      "items": [
+        {
+          "id": 1,
+          "qty": 4
+        },
+        {
+          "id": 5,
+          "qty": 5
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "total": 42,
+      "convertedToOrder": 1,
+      "items": [
+        {
+          "id": 1,
+          "qty": 2
+        },
+        {
+          "id": 4,
+          "qty": 4
+        }
+      ]
     }
   ],
   "orders": [
@@ -77,6 +109,21 @@
       "id": 1,
       "userId": 1,
       "cartId": 1
+    },
+    {
+      "userId": 1,
+      "cartId": 1,
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "cartId": 3,
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "cartId": 4,
+      "id": 4
     }
   ],
   "products": [

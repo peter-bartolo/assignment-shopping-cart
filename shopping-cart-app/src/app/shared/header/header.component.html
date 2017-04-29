@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row-fluid">
     <div class="pull-left">
-      Infused Olive Oils
+      <a routerLink="/home">Infused Olive Oils</a>
     </div>
     <div *ngIf="authService.getUser() === null" class="pull-right">
       <a routerLink="login" routerLinkActive="active">Sign In</a>

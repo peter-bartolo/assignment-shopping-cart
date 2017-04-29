@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import {RouterModule} from '@angular/router';
 import {shoppingcartRoutes} from './routes';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
   imports: [
@@ -13,6 +14,6 @@ import {shoppingcartRoutes} from './routes';
   exports: [
     ShoppingCartComponent
   ],
-  declarations: [ShoppingCartComponent]
+  declarations: [ShoppingCartComponent, OrderComponent]
 })
 export class ShoppingcartModule { }

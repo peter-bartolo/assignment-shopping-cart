@@ -5,7 +5,7 @@
   <div class="row" *ngFor="let counter of rows">
     <div class="col-md-4 text-center well" *ngFor="let p of products.slice(counter * 3, (counter * 3) + 3)">
       <div>
-        <a [routerLink]="['/product',p.id]"><img src="/assets/images/{{p?.image}}" width="340px" height="340px" /></a>
+        <a [routerLink]="['/product',p.id]"><img src="/assets/images/{{p?.image}}" width="265px" height="450px" /></a>
       </div>
       <div class="text-muted text-left">
         <a [routerLink]="['/product',p.id]">{{p?.name}}</a>

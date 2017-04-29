@@ -4,6 +4,12 @@ import {ProductService} from '../../shared/service/product.service';
 import {Product} from '../../shared/model/Product';
 import {Cart} from '../../shared/model/Cart';
 import {CartService} from '../../shared/service/cart.service';
+import {UserService} from '../../shared/service/user.service';
+import {AuthService} from '../../authentication/service/auth.service';
+import {User} from '../../shared/model/User';
+import {Order} from '../../shared/model/Order';
+import {OrderService} from '../../shared/service/order.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -18,7 +24,11 @@ export class ShoppingCartComponent implements OnInit {
   constructor(
     private currentCartService: CurrentCartService,
     private productService: ProductService,
-    private cartService: CartService) {
+    private cartService: CartService,
+    private userService: UserService,
+    private authService: AuthService,
+    private orderService: OrderService,
+    private router: Router) {
     this.products = new Array<Product>();
     this.errorMessage = '';
   }
@@ -64,6 +74,42 @@ export class ShoppingCartComponent implements OnInit {
     this.cartService.updateCart(currentCart).subscribe(
       (cartData) => {
         this.currentCartService.setCurrentCart(currentCart);
+      },
+      (err) => {
+        this.errorMessage = 'Failed to update cart object';
+      }
+    );
+  }
+
+  public createOrder() {
+    const currentCart: Cart = this.currentCartService.getCurrentCart();
+    currentCart.convertedToOrder = 1;
+    this.cartService.updateCart(currentCart).subscribe(
+      (cartData) => {
+        this.currentCartService.setCurrentCart(null);
+
+        const loggedInUser: User = this.authService.getUser();
+        loggedInUser.cartId = 0;
+        this.userService.updateUser(loggedInUser).subscribe(
+          (userData) => {
+            this.authService.setUser(loggedInUser);
+
+            const order = new Order();
+            order.userId = loggedInUser.id;
+            order.cartId = currentCart.id;
+            this.orderService.addOrder(order).subscribe(
+              (orderData) => {
+                this.router.navigate(['/order']);
+              },
+              (err) => {
+                this.errorMessage = 'Failed to create order object.';
+              }
+            );
+          },
+          (err) => {
+            this.errorMessage = 'Failed to update the user object';
+          }
+        );
       },
       (err) => {
         this.errorMessage = 'Failed to update cart object';
