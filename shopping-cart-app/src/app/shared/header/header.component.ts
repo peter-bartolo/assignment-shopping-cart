@@ -40,6 +40,6 @@ export class HeaderComponent implements OnInit {
   }
 
   public getUser() {
-    this.authService.getUser();
+    return this.authService.getUser();
   }
 }

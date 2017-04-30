@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li *ngIf="getUser() !== null">
-          <a>Welcome, {{getUser().name}} {{getUser().surname}}</a>
+          <a>Welcome, {{getUser()?.name}} {{getUser()?.surname}}</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

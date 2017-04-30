@@ -97,7 +97,8 @@ export class ProductDetailComponent implements OnInit {
 
       this.cartService.addCart(newCart).subscribe(
         (data) => {
-          loggedInUser.cartId = data.json().id;
+          newCart.id = data.json().id;
+          loggedInUser.cartId = newCart.id;
           this.userService.updateUser(loggedInUser).subscribe(
             (userData) => {
               this.currentCartService.setCurrentCart(newCart);

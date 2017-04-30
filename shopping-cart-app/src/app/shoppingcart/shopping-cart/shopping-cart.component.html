@@ -25,12 +25,12 @@
       <h4>Remove</h4>
     </div>
   </div>
-  <div class="row" *ngFor="let cartItem of this.getCurrentCart()?.items">
+  <div class="row" *ngFor="let cartItem of getCurrentCart()?.items">
     <div class="col-md-12">
       <hr>
     </div>
     <div class="col-md-2">
-      <img src="/assets/images/{{getProduct(cartItem.id)?.image}}" width="100px" height="170px" />
+      <img *ngIf="getProduct(cartItem.id) !== null" src="/assets/images/{{getProduct(cartItem.id)?.image}}" width="100px" height="170px" />
     </div>
     <div class="col-md-4">
       <h5>{{getProduct(cartItem.id)?.name}}</h5>
@@ -60,7 +60,7 @@
   </div>
   <div class="row">
     <div class="col-md-2 col-md-offset-10 text-right">
-      <button type="button" class="btn btn-primary" (click)="createOrder()">Checkout</button>
+      <button type="button" class="btn btn-primary" (click)="createOrder()" [disabled]="getCurrentCart()?.items.length <= 0">Checkout</button>
     </div>
   </div>
 </div>
