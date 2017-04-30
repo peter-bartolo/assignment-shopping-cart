@@ -22,7 +22,31 @@ describe('HeaderComponent', () => {
   }));
 
   beforeEach(() => {
-    authServiceSpy.getUser.and.returnValue({name: 'test name', surname: 'test surname'});
+    authServiceSpy.getUser.and.returnValue({
+      id: 1,
+      name: 'test name',
+      surname: 'test surname',
+      email: 'test@test.com',
+      password: '123456',
+      isLoggedIn: 1,
+      cartId: 1
+    });
+    currentCartServiceSpy.getCurrentCart.and.returnValue({
+      id: 1,
+      userId: 1,
+      total: 7,
+      convertedToOrder: 0,
+      items: [
+        {
+          id: 1,
+          qty: 1
+        },
+        {
+          id: 2,
+          qty: 4
+        }
+      ]
+    });
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -36,5 +60,19 @@ describe('HeaderComponent', () => {
 
     expect(authServiceSpy.logout).toHaveBeenCalled();
     expect(currentCartServiceSpy.setCurrentCart).toHaveBeenCalled();
+  });
+
+  it('should call CurrentCartService.getCurrentCart and if cart is available return true in loggedInUserHasCart method', () => {
+    const output = component.loggedInUserHasCart();
+
+    expect(currentCartServiceSpy.getCurrentCart).toHaveBeenCalled();
+    expect(output).toBe(true);
+  });
+
+  it('should call CurrentCartService.getCurrentCart and return the number of cart items in getNumberOfCartItems method', () => {
+    const output = component.getNumberOfCartItems();
+
+    expect(currentCartServiceSpy.getCurrentCart).toHaveBeenCalled();
+    expect(output).toEqual(5);
   });
 });
