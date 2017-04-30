@@ -38,4 +38,8 @@ export class HeaderComponent implements OnInit {
     }
     return numberOfItems;
   }
+
+  public getUser() {
+    this.authService.getUser();
+  }
 }

@@ -19,7 +19,15 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  private submitLoginForm(loginForm: NgForm) {
+  public getLoginMessage() {
+    return this.loginMessage;
+  }
+
+  public getErrorMessage() {
+    return this.errorMessage;
+  }
+
+  public submitLoginForm(loginForm: NgForm) {
     this.authService.setUser(null);
     this.errorMessage = '';
     const loginObservable = this.authService.login(loginForm.controls.email.value, loginForm.controls.password.value);

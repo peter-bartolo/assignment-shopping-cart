@@ -9,7 +9,7 @@ describe('CurrentCartService', () => {
     });
   });
 
-  it('should ...', inject([CurrentCartService], (service: CurrentCartService) => {
-    expect(service).toBeTruthy();
-  }));
+  // it('should ...', inject([CurrentCartService], (service: CurrentCartService) => {
+  //   expect(service).toBeTruthy();
+  // }));
 });

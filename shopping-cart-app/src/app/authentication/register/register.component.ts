@@ -19,7 +19,19 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  private submitRegisterForm(registerForm: NgForm) {
+  public getRegisterMessage() {
+    return this.registerMessage;
+  }
+
+  public getErrorMessage() {
+    return this.errorMessage;
+  }
+
+  public getSuccessMessage() {
+    return this.successMessage;
+  }
+
+  public submitRegisterForm(registerForm: NgForm) {
     this.errorMessage = '';
     this.successMessage = '';
     let emailAlreadyExists = false;

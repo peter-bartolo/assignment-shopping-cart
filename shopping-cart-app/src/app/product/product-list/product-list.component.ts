@@ -18,6 +18,18 @@ export class ProductListComponent implements OnInit {
     this.products = new Array();
   }
 
+  public getProducts() {
+    return this.products;
+  }
+
+  public getRows() {
+    return this.rows;
+  }
+
+  public getErrorMessage() {
+    return this.errorMessage;
+  }
+
   ngOnInit() {
     this.productService.getProducts()
       .map((response) => response.json())

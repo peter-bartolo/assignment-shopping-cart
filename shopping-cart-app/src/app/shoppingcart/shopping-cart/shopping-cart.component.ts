@@ -33,6 +33,14 @@ export class ShoppingCartComponent implements OnInit {
     this.errorMessage = '';
   }
 
+  public getErrorMessage() {
+    return this.errorMessage;
+  }
+
+  public getCurrentCart() {
+    return this.currentCartService.getCurrentCart();
+  }
+
   ngOnInit() {
     this.productService.getProducts()
       .map((response) => response.json())

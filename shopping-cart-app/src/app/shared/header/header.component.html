@@ -5,18 +5,18 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li *ngIf="authService.getUser() !== null">
-          <a>Welcome, {{authService.getUser().name}} {{authService.getUser().surname}}</a>
+        <li *ngIf="getUser() !== null">
+          <a>Welcome, {{getUser().name}} {{getUser().surname}}</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="authService.getUser() === null">
+        <li *ngIf="getUser() === null">
           <a routerLink="login" routerLinkActive="active">Sign In</a>
         </li>
         <li *ngIf="loggedInUserHasCart() === true">
           <a routerLink="/cart"><span class="glyphicon glyphicon-shopping-cart"> </span> {{getNumberOfCartItems()}}</a>
         </li>
-        <li *ngIf="authService.getUser() !== null">
+        <li *ngIf="getUser() !== null">
           <a routerLink="/home" (click)="signOut()">Sign Out</a>
         </li>
       </ul>

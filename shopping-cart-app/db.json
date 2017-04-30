@@ -7,7 +7,7 @@
       "email": "peter_bartolo@hotmail.com",
       "password": "123456",
       "isLoggedIn": 0,
-      "cartId": 0
+      "cartId": 7
     },
     {
       "id": 2,
@@ -172,6 +172,22 @@
         {
           "id": 5,
           "qty": 5
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "userId": 1,
+      "total": 27,
+      "convertedToOrder": 0,
+      "items": [
+        {
+          "id": 2,
+          "qty": 1
+        },
+        {
+          "id": 6,
+          "qty": 2
         }
       ]
     }

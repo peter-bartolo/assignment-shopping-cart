@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div *ngIf="errorMessage.length > 0" class="col-md-12 alert alert-danger">{{errorMessage}}</div>
-    <div *ngIf="authService.getUser() === null" class="col-md-12 alert alert-info">You need to be logged in to add products to the cart.</div>
+    <div *ngIf="getErrorMessage().length > 0" class="col-md-12 alert alert-danger">{{getErrorMessage()}}</div>
+    <div *ngIf="getUser() === null" class="col-md-12 alert alert-info">You need to be logged in to add products to the cart.</div>
   </div>
   <div class="row">
     <div class="col-md-5 text-center">
@@ -35,7 +35,7 @@
           <form #addToCartForm="ngForm" (ngSubmit)="submitAddToCartForm(addToCartForm)">
             <div class="input-group">
                 <input type="number" name="qty" value="1" min="1" max="100" class="form-control" ngModel />
-                <span class="input-group-btn"><button type="submit" class="btn btn-primary" [disabled]="authService.getUser() === null || addToCartForm.form.invalid">Add To Cart</button></span>
+                <span class="input-group-btn"><button type="submit" class="btn btn-primary" [disabled]="getUser() === null || addToCartForm.form.invalid">Add To Cart</button></span>
             </div>
           </form>
         </div>

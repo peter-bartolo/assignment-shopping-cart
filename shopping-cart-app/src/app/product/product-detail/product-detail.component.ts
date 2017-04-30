@@ -17,7 +17,7 @@ import {CurrentCartService} from 'app/shared/service/current-cart.service';
 })
 export class ProductDetailComponent implements OnInit {
 
-  private product: Product;
+  public product: Product;
   private errorMessage: string;
 
   constructor(
@@ -30,6 +30,14 @@ export class ProductDetailComponent implements OnInit {
     private currentCartService: CurrentCartService) {
     this.product = null;
     this.errorMessage = '';
+  }
+
+  public getErrorMessage() {
+    return this.errorMessage;
+  }
+
+  public getUser() {
+    return this.authService.getUser();
   }
 
   ngOnInit() {
@@ -61,7 +69,7 @@ export class ProductDetailComponent implements OnInit {
     }
   }
 
-  private submitAddToCartForm(addToCartForm: NgForm) {
+  public submitAddToCartForm(addToCartForm: NgForm) {
     const qty = addToCartForm.controls.qty.value;
     if (qty <= 0) {
       this.errorMessage = 'Quantity field cannot have a value less than zero';
