@@ -8,7 +8,7 @@ export class CartService {
   private url: string;
 
   constructor(private http: Http) {
-    this.url = 'http://5.189.142.170:3000';
+    this.url = 'http://localhost:3000';
   }
 
   public getCart(id: number) {
